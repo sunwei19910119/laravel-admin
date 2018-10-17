@@ -33,7 +33,11 @@
 <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">登录</p>
-    @include('admin.layouts.error')
+    @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <strong>用户名或密码错误！</strong>
+    </div>
+    @endif
     <form action="{{ url('/admin/login') }}" method="post">
       <div class="form-group has-feedback">
         <input name="username" type="username" class="form-control" placeholder="用户名">
