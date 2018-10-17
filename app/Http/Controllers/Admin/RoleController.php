@@ -85,7 +85,7 @@ class RoleController extends BaseController
             }
             return $this->retJson(200, '操作成功!');
         } catch (Exception $e) {
-            return $this->retJson(503, '操作出错2!');
+            return $this->retJson(503, '操作出错!');
         }
     }
 
