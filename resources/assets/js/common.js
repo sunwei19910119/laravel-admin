@@ -32,7 +32,7 @@ $(function () {
 
         //请求
         $.post(_url, params, function(data){
-            swal("操作成功！");
+            swal("操作成功！",'','success');
             if (_refresh_url !== null && _refresh_url !== undefined && _refresh_url !== '') {
                 window.location.href=_refresh_url;
                 return;
@@ -57,38 +57,50 @@ $(function () {
                 return;
             //权限
             } else if (status == 403){
-                swal(params);
+                swal(params,'','warning');
                 return;
             } else {
-                swal(params);
+                swal(params,'','error');
                 return;
             }
         });
     });
 
     $('._delete_').click(function () {
-        if(!confirm('确定要删除吗？')) {
-            return false;
-        }
-        var _this = $(this);
-        var _url = _this.attr('data-url');
-        $.post(_url, {_method: 'DELETE'}, function (response) {
-            if (response.role) {
-                swal(response.role);
-                return;
+        swal({
+            title: '确定删除吗？', 
+            text: '你将无法恢复它！', 
+            icon: 'warning',
+            buttons: {
+                cancel: "取消",
+                confirm: "确定",
             }
-            if (response.status == 200) {
-                swal(response.msg);
-                location.reload();
-                return;
-            } else {
-                swal(response.msg);
-                return;
-            }
-        }).fail(function(data) {
-            var params = data.responseJSON;
-            var status = data.status;
-            swal(params);
-        });
+        }).then(isConfirm =>{
+                if(isConfirm){   
+                        var _this = $(this);
+                        var _url = _this.attr('data-url');
+                        $.post(_url, {_method: 'DELETE'}, function (response) {
+                            if (response.role) {
+                                swal(response.role,'','warning');
+                                return;
+                            }
+                            if (response.status == 200) {
+                                swal(response.msg,'','success');
+                                location.reload();
+                                return;
+                            } else {
+                                swal(response.msg,'error');
+                                return;
+                            }
+                        }).fail(function(data) {
+                            var params = data.responseJSON;
+                            var status = data.status;
+                            swal(params,'','error');
+                        });
+                    }  
+                }
+            )
     });
+
+
 });
