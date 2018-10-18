@@ -37,8 +37,10 @@
         $.widget.bridge('uibutton', $.ui.button);
     </script>
     <script src="{{ asset('/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('/js/app.min.js') }}"></script>
+    <script src="{{ asset('/js/app.js') }}"></script>
     <script src="{{ asset('/js/common.js') }}"></script>
 @yield('js')
 </body>
 </html>
+
+

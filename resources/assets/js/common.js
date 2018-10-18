@@ -1,3 +1,5 @@
+require('sweetalert');
+
 $(function () {
 
     $.ajaxSetup({
@@ -30,7 +32,7 @@ $(function () {
 
         //请求
         $.post(_url, params, function(data){
-            alert("操作成功！");
+            swal("操作成功！");
             if (_refresh_url !== null && _refresh_url !== undefined && _refresh_url !== '') {
                 window.location.href=_refresh_url;
                 return;
@@ -55,10 +57,10 @@ $(function () {
                 return;
             //权限
             } else if (status == 403){
-                alert(params);
+                swal(params);
                 return;
             } else {
-                alert(params);
+                swal(params);
                 return;
             }
         });
@@ -72,21 +74,21 @@ $(function () {
         var _url = _this.attr('data-url');
         $.post(_url, {_method: 'DELETE'}, function (response) {
             if (response.role) {
-                alert(response.role);
+                swal(response.role);
                 return;
             }
             if (response.status == 200) {
-                alert(response.msg);
+                swal(response.msg);
                 location.reload();
                 return;
             } else {
-                alert(response.msg);
+                swal(response.msg);
                 return;
             }
         }).fail(function(data) {
             var params = data.responseJSON;
             var status = data.status;
-            alert(params);
+            swal(params);
         });
     });
 });
