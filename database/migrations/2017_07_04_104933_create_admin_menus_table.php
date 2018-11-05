@@ -19,7 +19,7 @@ class CreateAdminMenusTable extends Migration {
 			$table->integer('order')->default(0)->comment('菜单排序,从1开始,数字越小排在超前,0为排在最后');
 			$table->string('title', 50)->nullable()->comment('标题');
 			$table->string('icon', 50)->comment('图标');
-			$table->string('uri', 50)->comment('URI');
+			$table->string('uri', 50)->nullable()->default('')->comment('URI');
 			$table->string('routes', 256)->nullable()->comment('路由,如url:/menu,controller:MenuController');
 			$table->timestamps();
 		});
