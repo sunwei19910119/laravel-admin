@@ -1,6 +1,6 @@
-@section('title', '后台首页')
-@section('content_title', '后台首页')
-@section('content_title_small', 'index')
+@section('title', '首页')
+@section('content_title', '首页')
+@section('content_title_small', '')
 @extends('admin.layouts.admin')
 @section('content')
     @if (Session::has('msg'))
@@ -23,5 +23,18 @@
             {{ Session::get('danger') }}
         </div>
     @endif
+    <div class="box-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
 
+                @foreach($envs as $env)
+                    <tr>
+                        <td width="120px">{{ $env['name'] }}</td>
+                        <td>{{ $env['value'] }}</td>
+                    </tr>
+                @endforeach
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+    </div>
 @endsection

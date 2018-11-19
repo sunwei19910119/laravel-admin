@@ -47,6 +47,7 @@
         <input name="password" type="password" class="form-control" placeholder="密码">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
+
       <div class="row">
         <div class="col-xs-8">
           <div class="checkbox icheck">
@@ -76,6 +77,7 @@
 <script src="{{ asset('/bootstrap/js/bootstrap.min.js') }}"></script>
 <!-- iCheck -->
 <script src="{{ asset('/plugins/iCheck/icheck.min.js') }}"></script>
+
 <script>
   $(function () {
     $('input').iCheck({
