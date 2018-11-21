@@ -2,6 +2,7 @@
 
 ### 简介:<br />
  基于laravel5.5开发管理后台，集成adminlte模板，包含权限管理和目录设置。
+ 包含DingoApi搭建的Restful API接口，开箱即用。
 
 
 ### 环境要求:<br />
