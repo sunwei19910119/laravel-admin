@@ -27,7 +27,7 @@ class CreateUserTable extends Migration
             $table->string('wx_uuid')->default('');
             $table->string('wx_nick')->default('');
             $table->string('sign',100)->default('')->comment('个性签名');
-            $table->tinyInteger('state')->default(1)->comment('状态；1正常 2封禁');
+            $table->tinyInteger('state')->default(1)->comment('状态；1正常 0封禁');
             $table->timestamps();
         });
     }
